@@ -1,4 +1,5 @@
-import { fetchAPI, getStrapiMedia } from "./strapi"
+import { client, urlFor } from './sanity/client'
+import { postsQuery, postBySlugQuery, postSlugsQuery } from './sanity/queries'
 
 export interface BlogPost {
   id: string
@@ -11,6 +12,21 @@ export interface BlogPost {
   content: string
   author: string
   readTime: string
+}
+
+// Sanity post type (raw from API)
+interface SanityPost {
+  _id: string
+  slug: string
+  title: string
+  category?: string | null
+  date?: string | null
+  description?: string | null
+  excerpt?: string | null
+  image?: any
+  content?: any // Can be Portable Text or string
+  author?: string | null
+  readTime?: string | null
 }
 
 // Simple Markdown to HTML converter to avoid external dependencies for now
@@ -41,118 +57,101 @@ function simpleMarkdownToHtml(markdown: string): string {
   return html
 }
 
+// Convert Sanity content to HTML
+// Handles both Portable Text arrays and plain strings
+function convertContentToHtml(content: any): string {
+  if (!content) return ""
+  
+  // If it's already a string, treat as markdown/HTML
+  if (typeof content === 'string') {
+    return simpleMarkdownToHtml(content)
+  }
+  
+  // If it's an array (Portable Text), convert to HTML
+  if (Array.isArray(content)) {
+    let html = ''
+    for (const block of content) {
+      if (block._type === 'block') {
+        const text = block.children?.map((child: any) => child.text || '').join('') || ''
+        if (text) {
+          const style = block.style || 'normal'
+          if (style === 'h1') {
+            html += `<h1 class="text-4xl font-bold mt-8 mb-6">${text}</h1>`
+          } else if (style === 'h2') {
+            html += `<h2 class="text-3xl font-bold mt-8 mb-4">${text}</h2>`
+          } else if (style === 'h3') {
+            html += `<h3 class="text-2xl font-bold mt-6 mb-4">${text}</h3>`
+          } else {
+            html += `<p class="mb-4">${text}</p>`
+          }
+        }
+      }
+    }
+    return html || '<p class="mb-4">No content available.</p>'
+  }
+  
+  return '<p class="mb-4">No content available.</p>'
+}
+
+// Format date from ISO string to readable format
+function formatDate(dateString: string | null | undefined): string {
+  if (!dateString) return 'Date not available'
+  
+  try {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  } catch {
+    return dateString
+  }
+}
+
+// Transform Sanity post to BlogPost
+function transformSanityPost(post: SanityPost): BlogPost {
+  return {
+    id: post._id,
+    slug: post.slug,
+    title: post.title || 'Untitled',
+    category: post.category || 'Uncategorized',
+    date: formatDate(post.date),
+    description: post.description || post.excerpt || '',
+    image: post.image ? urlFor(post.image).width(1200).height(630).url() : '/placeholder.jpg',
+    content: convertContentToHtml(post.content),
+    author: post.author || 'LUMEN Team',
+    readTime: post.readTime || '5 min read'
+  }
+}
+
 export async function getAllBlogs(): Promise<BlogPost[]> {
   try {
-    const data = await fetchAPI("/articles", { populate: "*" })
-    
-    if (!data?.data) {
-      return []
-    }
-    
-    return data.data.map((item: any) => mapStrapiToBlogPost(item))
+    const posts: SanityPost[] = await client.fetch(postsQuery)
+    return posts.map(transformSanityPost)
   } catch (error) {
-    console.error("Error fetching blogs:", error)
+    console.error('Error fetching blogs from Sanity:', error)
     return []
   }
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogPost | undefined> {
   try {
-    const data = await fetchAPI("/articles", { 
-      filters: { slug },
-      populate: "*" 
-    })
-    
-    if (!data?.data || data.data.length === 0) {
-      return undefined
-    }
-
-    // Since Strapi returns an array even for filtered results, grab the first one
-    return mapStrapiToBlogPost(data.data[0])
+    const post: SanityPost | null = await client.fetch(postBySlugQuery, { slug })
+    if (!post) return undefined
+    return transformSanityPost(post)
   } catch (error) {
-    console.error(`Error fetching blog with slug ${slug}:`, error)
+    console.error('Error fetching blog by slug from Sanity:', error)
     return undefined
   }
 }
 
-function mapStrapiToBlogPost(item: any): BlogPost {
-  // In Strapi v5, attributes are typically spread on the item itself for JSON:API format,
-  // OR nested if using the REST API without flattening.
-  // The log shows they are DIRECTLY on the item.
-  // item.attributes fallback is for v4.
-  const attrs = item.attributes || item
-  
-  // Extract content from dynamic zone blocks
-  let content = ""
-  if (attrs.blocks) {
-    attrs.blocks.forEach((block: any) => {
-      if (block.__component === "shared.rich-text") {
-        content += simpleMarkdownToHtml(block.body)
-      }
-      // Add more block handlers here if needed (e.g., shared.media, shared.quote)
-    })
-  } else {
-    // Fallback if no blocks: use description or check for a 'content' field if schema changed
-    if (!content && attrs.description) {
-        content = `<p>${attrs.description}</p>`
-    }
-  }
-
-  // Handle Cover Image
-  // Log structure: cover: { id, documentId, url, formats: { ... } }
-  let imageUrl = ""
-  if (attrs.cover) {
-     if (typeof attrs.cover.url === 'string') {
-        imageUrl = getStrapiMedia(attrs.cover.url) || ""
-     } else if (attrs.cover.data?.attributes?.url) {
-        // v4 structure
-        imageUrl = getStrapiMedia(attrs.cover.data.attributes.url) || ""
-     } else if (attrs.cover.formats?.medium?.url) {
-        imageUrl = getStrapiMedia(attrs.cover.formats.medium.url) || ""
-     }
-  }
-  if (!imageUrl) imageUrl = "/placeholder.jpg"
-
-
-  // Handle Category
-  // Log doesn't show category field yet, but logic should be safe
-  let categoryName = "General"
-  if (attrs.category) {
-      if (typeof attrs.category.name === 'string') {
-          categoryName = attrs.category.name
-      } else if (attrs.category.data?.attributes?.name) {
-          categoryName = attrs.category.data.attributes.name
-      }
-  }
-
-  // Handle Author
-  let authorName = "LUMEN Team"
-  if (attrs.author) {
-      if (typeof attrs.author.name === 'string') {
-          authorName = attrs.author.name
-      } else if (attrs.author.data?.attributes?.name) {
-          authorName = attrs.author.data.attributes.name
-      }
-  }
-
-  // Handle ID: v5 uses documentId for unique identification in some contexts, but id is also there.
-  // Let's ensure we have a string.
-  const id = item.documentId || item.id
-
-  return {
-    id: id ? id.toString() : "",
-    slug: attrs.slug,
-    title: attrs.title,
-    category: categoryName,
-    date: attrs.publishedAt ? new Date(attrs.publishedAt).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }) : "Unknown Date",
-    description: attrs.description || "",
-    image: imageUrl,
-    content: content,
-    author: authorName,
-    readTime: content ? `${Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)} min read` : "5 min read",
+export async function getAllBlogSlugs(): Promise<string[]> {
+  try {
+    const slugs: { slug: string }[] = await client.fetch(postSlugsQuery)
+    return slugs.map(item => item.slug)
+  } catch (error) {
+    console.error('Error fetching blog slugs from Sanity:', error)
+    return []
   }
 }

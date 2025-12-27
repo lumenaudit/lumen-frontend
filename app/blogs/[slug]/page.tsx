@@ -7,12 +7,9 @@ import { BlogDetailSection } from "@/components/blog-detail-section"
 import { getBlogBySlug, getAllBlogs } from "@/lib/blogs-data"
 import { notFound } from "next/navigation"
 
-// ❌ REMOVE generateStaticParams – static build causes Strapi fail
-// export async function generateStaticParams() {}
-
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-
-  const blog = await getBlogBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const blog = await getBlogBySlug(slug)
 
   if (!blog) {
     return {
@@ -26,12 +23,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
-
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  console.log('Fetching blog with slug:', slug)
+  
   // fetch current blog
-  const blog = await getBlogBySlug(params.slug)
+  const blog = await getBlogBySlug(slug)
+  
+  console.log('Blog found:', blog ? 'Yes' : 'No')
 
   if (!blog) {
+    console.error('Blog not found for slug:', slug)
     notFound()
   }
 

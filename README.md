@@ -25,8 +25,9 @@ pnpm install
 Create a `.env.local` file in the root directory:
 
 ```env
-NEXT_PUBLIC_STRAPI_API_URL=http://localhost:1337
-STRAPI_API_TOKEN=your_strapi_api_token_here
+# Add your Sanity CMS environment variables here
+# NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+# NEXT_PUBLIC_SANITY_DATASET=your_dataset
 ```
 
 ### Development
@@ -77,7 +78,7 @@ pnpm start
 
 ## 🔗 Backend
 
-This frontend connects to a Strapi CMS backend. Make sure the Strapi backend is running and accessible at the URL specified in your environment variables.
+This frontend will connect to a Sanity CMS backend. Configure your Sanity project credentials in your environment variables.
 
 ## 🚢 Deployment
 
@@ -94,5 +95,7 @@ This project is optimized for deployment on [Vercel](https://vercel.com):
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI
-- **CMS**: Strapi (external)
+- **CMS**: Sanity (external)
+
+
 
