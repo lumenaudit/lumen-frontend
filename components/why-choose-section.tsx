@@ -43,7 +43,7 @@ export function WhyChooseSection() {
 
             {/* Main Title */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 tracking-tight">
-              Why Choose LUMEN
+              Why Choose Lumen
             </h2>
 
             {/* Description */}

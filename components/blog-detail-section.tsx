@@ -26,8 +26,19 @@ export function BlogDetailSection({ blog, relatedBlogs }: BlogDetailSectionProps
             Back to Blogs
           </Link>
 
-          {/* Category Label */}
-          <p className="text-xl md:text-2xl font-extrabold text-accent uppercase tracking-wider mb-4">{blog.category}</p>
+          {/* Category Badge */}
+          {blog.category && (
+            <div className="mb-6">
+              <div
+                className="inline-block px-6 py-2.5 rounded-full text-white text-sm font-bold uppercase tracking-wider shadow-lg"
+                style={{
+                  background: `linear-gradient(135deg, rgba(153, 130, 20, 0.95) 0%, rgba(214, 191, 82, 0.9) 100%)`,
+                }}
+              >
+                {blog.category}
+              </div>
+            </div>
+          )}
 
           {/* Title */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 tracking-tight">
@@ -42,18 +53,6 @@ export function BlogDetailSection({ blog, relatedBlogs }: BlogDetailSectionProps
               </svg>
               <span className="text-foreground/70">{blog.date}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              <span className="text-foreground/70">{blog.author}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-foreground/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="text-foreground/70">{blog.readTime}</span>
-            </div>
           </div>
 
           {/* Featured Image */}
@@ -67,13 +66,10 @@ export function BlogDetailSection({ blog, relatedBlogs }: BlogDetailSectionProps
           </div>
 
           {/* Blog Content */}
-          <div className="prose prose-lg max-w-none">
+          <div className="max-w-none">
             <div
-              className="text-foreground/80 leading-relaxed"
+              className="blog-content"
               dangerouslySetInnerHTML={{ __html: blog.content }}
-              style={{
-                lineHeight: "1.8",
-              }}
             />
           </div>
 
@@ -84,7 +80,7 @@ export function BlogDetailSection({ blog, relatedBlogs }: BlogDetailSectionProps
           <div className="bg-white rounded-2xl p-8 border-2 border-primary/10 shadow-lg text-center">
             <h3 className="text-2xl font-bold text-primary mb-4">Need Expert Financial Guidance?</h3>
             <p className="text-foreground/70 mb-6">
-              Let's discuss how LUMEN can help your business thrive.
+              Let's discuss how Lumen can help your business thrive.
             </p>
             <Link
               href="/contact"

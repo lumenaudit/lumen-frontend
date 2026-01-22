@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: `${service.title} | LUMEN Audit & Advisory`,
+    title: `${service.title} | Lumen Audit & Advisory`,
     description: service.shortDescription,
   }
 }

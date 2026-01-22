@@ -22,8 +22,8 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between text-sm">
           {/* Left: Contact Info */}
           <div className="flex items-center gap-6">
-            <a href="mailto:hello@lumenadvisory.com" className="text-white hover:text-accent transition-colors">
-              hello@lumenadvisory.com
+            <a href="mailto:hello@Lumenadvisory.com" className="text-white hover:text-accent transition-colors">
+              hello@Lumenadvisory.com
             </a>
             <a href="tel:+966123456789" className="text-white hover:text-accent transition-colors">
               +966 12 345 6789
@@ -60,8 +60,8 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Image
-                src="/logo-lumen-1.svg"
-                alt="LUMEN Logo"
+                src="/logo-Lumen-1.svg"
+                alt="Lumen Logo"
                 width={350}
                 height={120}
                 className="h-12 md:h-12 w-auto drop-shadow-[0_0_15px_rgba(184,157,24,0.4)] group-hover:drop-shadow-[0_0_25px_rgba(184,157,24,0.6)] transition-all duration-300"
@@ -83,7 +83,7 @@ export function Navbar() {
               Services
             </Link>
             {/* <Link href="#why" className="text-sm font-semibold text-white hover:text-accent transition-colors">
-              Why LUMEN
+              Why Lumen
             </Link> */}
             <Link href="/blogs" className="text-sm font-semibold text-white hover:text-accent transition-colors">
               Blogs
@@ -112,7 +112,7 @@ export function Navbar() {
             Services
           </Link>
           {/* <Link href="#why" className="block text-sm font-semibold text-white hover:text-accent transition-colors">
-            Why LUMEN
+            Why Lumen
           </Link> */}
           <Link href="/blogs" className="block text-sm font-semibold text-white hover:text-accent transition-colors">
             Blogs

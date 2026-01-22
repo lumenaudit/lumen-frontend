@@ -14,8 +14,8 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <img
-                src="/logo-lumen-1.svg"
-                alt="LUMEN Logo"
+                src="/logo-Lumen-1.svg"
+                alt="Lumen Logo"
                 className="h-12 md:h-12 w-auto"
               />
             </Link>
@@ -84,14 +84,14 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/70">
               <li>Jeddah, Saudi Arabia</li>
               <li>+966 12 345 6789</li>
-              <li>hello@lumenadvisory.com</li>
+              <li>hello@Lumenadvisory.com</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between text-sm text-white/70">
-          <p>&copy; {currentYear} LUMEN Audit & Advisory. All rights reserved.</p>
+          <p>&copy; {currentYear} Lumen Audit & Advisory. All rights reserved.</p>
         </div>
       </div>
 

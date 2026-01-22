@@ -89,7 +89,7 @@ export function ContactSection() {
           </h2>
           <div className="w-32 h-1 bg-accent mx-auto mb-6"></div>
           <p className="text-lg text-foreground/70 leading-relaxed">
-            Reach out to discuss how LUMEN can support your business growth.
+            Reach out to discuss how Lumen can support your business growth.
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export function ContactSection() {
 
               <div>
                 <p className="text-sm font-semibold text-accent mb-2">Email</p>
-                <p className="text-primary text-lg">hello@lumenadvisory.com</p>
+                <p className="text-primary text-lg">hello@Lumenadvisory.com</p>
               </div>
 
               <div>

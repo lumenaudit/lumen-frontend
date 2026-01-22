@@ -12,7 +12,7 @@ const faqs = [
   {
     id: "01",
     question: "How do I get started with your team?",
-    answer: "Getting started with LUMEN is straightforward. Simply reach out through our contact form or call us directly. We'll schedule an initial consultation to understand your business needs, discuss your goals, and outline how our services can support your financial objectives. Our team will guide you through the onboarding process and ensure a smooth transition.",
+    answer: "Getting started with Lumen is straightforward. Simply reach out through our contact form or call us directly. We'll schedule an initial consultation to understand your business needs, discuss your goals, and outline how our services can support your financial objectives. Our team will guide you through the onboarding process and ensure a smooth transition.",
   },
   {
     id: "02",
@@ -32,7 +32,7 @@ const faqs = [
   {
     id: "05",
     question: "What is your approach to client confidentiality?",
-    answer: "Client confidentiality is paramount at LUMEN. We adhere to strict professional standards and legal requirements for data protection. All client information is handled with the utmost discretion, secured through advanced encryption and access controls, and shared only with authorized team members on a need-to-know basis. We maintain comprehensive confidentiality agreements and regularly review our security protocols to protect your sensitive financial data.",
+    answer: "Client confidentiality is paramount at Lumen. We adhere to strict professional standards and legal requirements for data protection. All client information is handled with the utmost discretion, secured through advanced encryption and access controls, and shared only with authorized team members on a need-to-know basis. We maintain comprehensive confidentiality agreements and regularly review our security protocols to protect your sensitive financial data.",
   },
 ]
 

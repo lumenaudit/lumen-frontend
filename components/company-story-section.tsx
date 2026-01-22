@@ -12,7 +12,7 @@ export function CompanyStorySection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-[700px] md:h-[800px]">
               <Image
                 src="/img 5.jpeg"
-                alt="LUMEN Office"
+                alt="Lumen Office"
                 width={1600}
                 height={1200}
                 className="w-full h-full object-cover"
@@ -41,7 +41,7 @@ export function CompanyStorySection() {
             <div className="w-32 h-1 bg-accent mb-6"></div>
 
             <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Founded with a vision to illuminate the path to financial success, LUMEN Audit & Advisory has grown from a small practice to a trusted partner for businesses across Saudi Arabia. Our journey began with a simple belief: that every business deserves access to expert financial guidance, regardless of size.
+              Founded with a vision to illuminate the path to financial success, Lumen Audit & Advisory has grown from a small practice to a trusted partner for businesses across Saudi Arabia. Our journey began with a simple belief: that every business deserves access to expert financial guidance, regardless of size.
             </p>
 
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">

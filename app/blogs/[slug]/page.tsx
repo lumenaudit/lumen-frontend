@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${blog.title} | LUMEN Audit & Advisory`,
+    title: `${blog.title} | Lumen Audit & Advisory`,
     description: blog.description,
   }
 }

@@ -12,7 +12,7 @@ export function AboutSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-[700px] md:h-[800px]">
               <Image
                 src="/executive-meeting-saudi-arabia-audit-firm.jpg"
-                alt="LUMEN Office"
+                alt="Lumen Office"
                 width={1600}
                 height={1200}
                 className="w-full h-full object-cover"
@@ -38,7 +38,7 @@ export function AboutSection() {
             <div className="w-32 h-1 bg-accent mb-6"></div>
 
             <p className="text-lg text-primary/70 mb-6 leading-relaxed">
-              We guide businesses toward financial confidence through integrity, transparency, and expert advisory. LUMEN Audit & Advisory is dedicated to delivering exceptional outcomes through accuracy, regulatory excellence, and value-driven insights.
+              We guide businesses toward financial confidence through integrity, transparency, and expert advisory. Lumen Audit & Advisory is dedicated to delivering exceptional outcomes through accuracy, regulatory excellence, and value-driven insights.
             </p>
 
             <p className="text-lg text-primary/70 mb-8 leading-relaxed">

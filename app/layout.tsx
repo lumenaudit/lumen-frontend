@@ -14,9 +14,14 @@ const poppins = Poppins({
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "LUMEN Audit & Advisory",
+  title: "Lumen Audit & Advisory",
   description: "Premium audit, tax, and advisory services for businesses in Saudi Arabia",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
