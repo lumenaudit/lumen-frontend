@@ -104,22 +104,27 @@ export function ContactSection() {
             <div className="space-y-8">
               <div>
                 <p className="text-sm font-semibold text-accent mb-2">Location</p>
-                <p className="text-primary text-lg">Jeddah, Saudi Arabia</p>
+                <p className="text-primary text-lg">Burj Alsafeer
+5th floor, 505
+3057/Falasteen street
+Ash Sharafiyah Dist
+Jeddah, KSA
+23218</p>
               </div>
 
               <div>
                 <p className="text-sm font-semibold text-accent mb-2">Phone</p>
-                <p className="text-primary text-lg">+966 12 345 6789</p>
+                <p className="text-primary text-lg">‪+966 50 043 8645‬</p>
               </div>
 
               <div>
                 <p className="text-sm font-semibold text-accent mb-2">Email</p>
-                <p className="text-primary text-lg">hello@Lumenadvisory.com</p>
+                <p className="text-primary text-lg">hello@lumenaudit.com</p>
               </div>
 
               <div>
                 <p className="text-sm font-semibold text-accent mb-2">Business Hours</p>
-                <p className="text-primary">Sunday - Thursday: 9:00 AM - 6:00 PM</p>
+                <p className="text-primary">Saturday - Thursday: 9:00 AM - 6:00 PM</p>
                 <p className="text-primary">Friday: Closed</p>
               </div>
             </div>

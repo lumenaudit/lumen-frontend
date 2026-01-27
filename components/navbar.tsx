@@ -22,11 +22,11 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between text-sm">
           {/* Left: Contact Info */}
           <div className="flex items-center gap-6">
-            <a href="mailto:hello@Lumenadvisory.com" className="text-white hover:text-accent transition-colors">
-              hello@Lumenadvisory.com
+            <a href="mailto:hello@lumenaudit.com" className="text-white hover:text-accent transition-colors">
+              hello@lumenaudit.com
             </a>
             <a href="tel:+966123456789" className="text-white hover:text-accent transition-colors">
-              +966 12 345 6789
+              ‪+966 50 043 8645‬
             </a>
           </div>
 
@@ -60,7 +60,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Image
-                src="/logo-Lumen-1.svg"
+                src="/logo-lumen-1.svg"
                 alt="Lumen Logo"
                 width={350}
                 height={120}

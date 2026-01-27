@@ -14,7 +14,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center mb-6">
               <img
-                src="/logo-Lumen-1.svg"
+                src="/logo-lumen-1.svg"
                 alt="Lumen Logo"
                 className="h-12 md:h-12 w-auto"
               />
@@ -22,6 +22,27 @@ export function Footer() {
             <p className="text-white/80 text-sm leading-relaxed">
               Illuminating financial clarity & strategic growth for businesses in Saudi Arabia.
             </p>
+          </div>
+          {/* Company */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4">Company</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#about" className="text-white/70 hover:text-accent transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="/blogs" className="text-white/70 hover:text-accent transition-colors">
+                  Blogs
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="text-white/70 hover:text-accent transition-colors">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Quick Links */}
@@ -35,56 +56,41 @@ export function Footer() {
               </li>
               <li>
                 <a href="#services" className="text-white/70 hover:text-accent transition-colors">
-                  Tax Advisory
+                Tax & Zakat Advisory
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-white/70 hover:text-accent transition-colors">
-                  Compliance
+                Compliance & Risk Advisory
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-white/70 hover:text-accent transition-colors">
-                  Forensic Accounting
+                Corporate Advisory & Strategy
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-white/70 hover:text-accent transition-colors">
+                Business Valuation & Advisory
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#about" className="text-white/70 hover:text-accent transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-accent transition-colors">
-                  Our Team
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-accent transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-white/70 hover:text-accent transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-sm mb-4">Contact</h4>
+            <h4 className="font-semibold text-sm mb-4">Connect</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>Jeddah, Saudi Arabia</li>
-              <li>+966 12 345 6789</li>
-              <li>hello@Lumenadvisory.com</li>
+              <li>Burj Alsafeer
+5th floor, 505
+3057/Falasteen street
+Ash Sharafiyah Dist
+Jeddah, KSA
+23218</li>
+              <li>‪+966 50 043 8645‬</li>
+              <li>hello@lumenaudit.com</li>
             </ul>
           </div>
         </div>
