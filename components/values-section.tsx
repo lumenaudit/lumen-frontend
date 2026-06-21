@@ -1,9 +1,10 @@
 "use client"
 
-// Icon components for each value
+import { useTranslations } from "next-intl"
+
 const ValueIcon = ({ valueId }: { valueId: string }) => {
   const iconClass = "w-8 h-8"
-  
+
   switch (valueId) {
     case "integrity":
       return (
@@ -34,87 +35,56 @@ const ValueIcon = ({ valueId }: { valueId: string }) => {
   }
 }
 
-const values = [
-  {
-    id: "integrity",
-    title: "Integrity",
-    description: "We uphold the highest ethical standards in all our engagements, ensuring transparency and trust in every interaction.",
-  },
-  {
-    id: "excellence",
-    title: "Excellence",
-    description: "We strive for perfection in every detail, delivering quality work that exceeds expectations and drives results.",
-  },
-  {
-    id: "innovation",
-    title: "Innovation",
-    description: "We leverage cutting-edge technology and methodologies to provide efficient, forward-thinking solutions.",
-  },
-  {
-    id: "partnership",
-    title: "Partnership",
-    description: "We build lasting relationships with our clients, working as an extension of their team to achieve shared goals.",
-  },
-]
+const valueIds = ["integrity", "excellence", "innovation", "partnership"]
 
 export function ValuesSection() {
+  const t = useTranslations("values")
+  const items = t.raw("items") as Array<{ title: string; description: string }>
+
   return (
     <section className="relative py-24 bg-transparent">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-2xl md:text-3xl font-extrabold text-accent uppercase tracking-wider mb-6">Our Values</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-accent uppercase tracking-wider mb-6">
+            {t("label")}
+          </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 tracking-tight">
-            What Drives <span className="text-accent">Us</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Our core values guide everything we do, shaping our approach to client service and business excellence.
-          </p>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>
 
-        {/* Values Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {values.map((value, index) => {
-            // Determine icon color based on value
-            const iconColor = value.id === "innovation" || value.id === "partnership" 
-              ? "text-accent" 
-              : "text-primary"
-            
+          {items.map((value, index) => {
+            const valueId = valueIds[index]
+            const iconColor =
+              valueId === "innovation" || valueId === "partnership" ? "text-accent" : "text-primary"
+
             return (
               <div
                 key={index}
                 className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-primary/10 hover:border-accent/40 group"
               >
-                {/* Icon */}
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
                     <div className={iconColor}>
-                      <ValueIcon valueId={value.id} />
+                      <ValueIcon valueId={valueId} />
                     </div>
                   </div>
                 </div>
-
-                {/* Title */}
                 <h3 className="text-xl font-bold text-primary mb-4 text-center group-hover:text-accent transition-colors duration-300">
                   {value.title}
                 </h3>
-
-                {/* Description */}
-                <p className="text-foreground/70 leading-relaxed text-center">
-                  {value.description}
-                </p>
-
-                {/* Top accent line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <p className="text-foreground/70 leading-relaxed text-center">{value.description}</p>
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             )
           })}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"></div>
+      <div className="absolute bottom-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"></div>
     </section>
   )
 }
-

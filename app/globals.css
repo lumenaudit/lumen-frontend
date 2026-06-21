@@ -90,6 +90,7 @@
 
 @theme inline {
   --font-sans: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  --font-arabic: var(--font-cairo), "Cairo", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -167,6 +168,15 @@
 
   p {
     @apply font-sans text-base leading-relaxed;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] p,
+  [dir="rtl"] body,
+  .font-arabic {
+    font-family: var(--font-arabic);
   }
 }
 
@@ -254,6 +264,15 @@
   animation: scrollLeft 20s linear infinite;
 }
 
+[dir="rtl"] .animate-scroll-left {
+  animation-direction: reverse;
+}
+
+/* RTL-aware icon flip for directional arrows */
+[dir="rtl"] .icon-directional {
+  transform: scaleX(-1);
+}
+
 /* Embla Carousel smooth transitions */
 .embla {
   overflow: hidden;
@@ -300,7 +319,7 @@
 .prose ul {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   list-style-type: disc;
 }
 
@@ -363,7 +382,7 @@
 .blog-content ul {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   list-style-type: disc;
 }
 

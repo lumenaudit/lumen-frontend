@@ -1,28 +1,29 @@
-import Link from "next/link"
 import Image from "next/image"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
 import { BlogPost } from "@/lib/blogs-data"
 
 interface BlogsListingSectionProps {
   blogs: BlogPost[]
 }
 
-export function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
+export async function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
+  const t = await getTranslations("blogs")
+
   return (
     <section className="relative py-24 bg-transparent pt-42">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-2xl md:text-3xl font-extrabold text-accent uppercase tracking-wider mb-6">BLOGS</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-accent uppercase tracking-wider mb-6">
+            {t("label")}
+          </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 tracking-tight">
-            Explore Our <span className="text-accent">Insights</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h1>
           <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Discover valuable insights, updates, and expert advice to navigate challenges and drive business success forward.
-          </p>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">{t("subtitle")}</p>
         </div>
 
-        {/* Blogs Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {blogs.map((blog) => (
             <Link
@@ -30,7 +31,6 @@ export function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
               href={`/blogs/${blog.slug}`}
               className="relative group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-primary/10 hover:border-accent/40 block"
             >
-              {/* Image Container */}
               <div className="relative w-full h-64 overflow-hidden">
                 <Image
                   src={blog.image}
@@ -38,8 +38,7 @@ export function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
                   fill
                   className="object-cover transform transition-transform duration-500 group-hover:scale-110"
                 />
-                {/* Category Label Overlay */}
-                <div className="absolute top-4 left-4 z-10">
+                <div className="absolute top-4 start-4 z-10">
                   <div
                     className="px-4 py-2 rounded-full text-white text-sm font-semibold shadow-lg"
                     style={{
@@ -49,11 +48,9 @@ export function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
                     {blog.category}
                   </div>
                 </div>
-                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <p className="text-sm text-foreground/60 mb-3 font-medium">{blog.date}</p>
                 <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-accent transition-colors duration-300">
@@ -66,15 +63,13 @@ export function BlogsListingSection({ blogs }: BlogsListingSectionProps) {
                 </div>
               </div>
 
-              {/* Top accent line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"></div>
+      <div className="absolute bottom-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40"></div>
     </section>
   )
 }
-

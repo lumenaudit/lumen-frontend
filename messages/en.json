@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "title": "Lumen Audit & Advisory",
+    "description": "Premium audit, tax, and advisory services for businesses in Saudi Arabia",
+    "serviceNotFound": "Service Not Found",
+    "blogNotFound": "Blog Not Found"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "blogs": "Blogs",
+    "contact": "Contact",
+    "contactUs": "Contact Us",
+    "logoAlt": "Lumen Logo",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "bannerAlt": "Hero Banner",
+    "title": "Illuminating Your",
+    "titleAccent": "Financial Path",
+    "subtitle": "Expert Audit and Advisory Services Strengthening Financial Confidence",
+    "cta": "Free Consultation"
+  },
+  "about": {
+    "imageAlt": "Lumen Office",
+    "title": "Where Accuracy Aligns With Strategic Insight",
+    "paragraph1": "We guide businesses toward financial confidence through integrity, transparency, and expert advisory. Lumen Audit & Advisory is dedicated to delivering exceptional outcomes through accuracy, regulatory excellence, and value-driven insights.",
+    "paragraph2": "Licensed and established in Saudi Arabia, our seasoned professionals combine deep sector expertise with advanced technology to support ambitious organizations across industries.",
+    "point1": "Industry-leading expertise in audit, tax, and advisory",
+    "point2": "Client-centric approach with personalized solutions",
+    "point3": "Technology-enabled processes for efficiency and accuracy"
+  },
+  "aboutPage": {
+    "heroTitle": "Built on Trust. Driven by",
+    "heroAccent": "Expertise",
+    "heroSubtitle": "We are a dedicated team of experienced auditors and financial professionals committed to building long-term partnerships with our clients. From startups to established enterprises, we deliver expert solutions precisely aligned with each client's unique business needs.",
+    "freeConsultation": "Free Consultation",
+    "ourServices": "Our Services",
+    "storyTitle": "A Foundation of Trust and Financial Excellence",
+    "storyParagraph1": "Founded with a vision to illuminate the path to financial success, Lumen Audit & Advisory has grown from a small practice to a trusted partner for businesses across Saudi Arabia. Our journey began with a simple belief: that every business deserves access to expert financial guidance, regardless of size.",
+    "storyParagraph2": "Today, we combine decades of collective professional experience with advanced technology to provide comprehensive audit, tax, and advisory services. Licensed and established in Saudi Arabia, we bring a deep understanding of the Kingdom's regulatory framework, commercial environment, and evolving business landscape."
+  },
+  "services": {
+    "sectionTitle": "Core Services",
+    "sectionSubtitle": "Comprehensive financial solutions designed to support your business at every stage of growth.",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "keyFeatures": "Key Features",
+    "ourProcess": "Our Process",
+    "contactUs": "Contact Us",
+    "ctaTitle": "Ready to Discuss Your Needs?",
+    "ctaDescription": "Contact us today for a free consultation and discover how our services can benefit your business.",
+    "ctaButton": "Get a Free Consultation",
+    "ctaDescriptionWithService": "Contact us today for a free consultation and discover how our {service} services can benefit your business.",
+    "breadcrumbHome": "Home",
+    "breadcrumbServices": "Services",
+    "items": {
+      "financial-audit": {
+        "title": "Financial Audit",
+        "shortDescription": "Independent audit services ensuring compliance with international standards and regulatory requirements.",
+        "fullDescription": [
+          "Our financial audit services provide independent assurance on the accuracy, transparency, and reliability of your financial statements. We help organizations strengthen stakeholder confidence while identifying risks, control gaps, and opportunities for improvement.",
+          "With extensive cross-industry experience and strong knowledge of international accounting standards, our audit professionals deliver thorough, objective, and compliant audit engagements aligned with statutory and regulatory expectations.",
+          "Beyond compliance, our audits are designed to deliver practical insights that enhance governance, strengthen internal controls, and support informed decision-making."
+        ],
+        "keyFeatures": [
+          { "title": "Independent Assurance", "description": "Objective evaluation of financial statements and internal control environments." },
+          { "title": "Regulatory Compliance", "description": "Adherence to applicable accounting standards and regulatory frameworks." },
+          { "title": "Risk Assessment", "description": "Identification and evaluation of financial and operational risks." },
+          { "title": "Comprehensive Reporting", "description": "Clear audit reports with actionable findings and recommendations." }
+        ],
+        "processSteps": [
+          { "title": "Planning & Risk Assessment", "description": "We begin by understanding your business, industry, and regulatory environment, identifying key risk areas and defining a tailored audit plan." },
+          { "title": "Audit Execution & Testing", "description": "Our team performs detailed testing of financial records, controls, and compliance processes using established audit methodologies." },
+          { "title": "Reporting & Recommendations", "description": "We deliver comprehensive audit reports highlighting key findings, insights, and recommendations to strengthen financial governance." }
+        ]
+      },
+      "tax-zakat-advisory": {
+        "title": "Tax & Zakat Advisory",
+        "shortDescription": "Strategic tax planning and zakat advisory aligned with your business structure and growth objectives.",
+        "fullDescription": [
+          "Our tax and zakat advisory services help businesses manage tax obligations efficiently while maintaining full compliance with Saudi regulations. We provide strategic planning, advisory, and compliance support across corporate tax, Zakat, and VAT.",
+          "Our specialists stay continuously updated on regulatory developments, enabling us to proactively advise clients on minimizing exposure, optimizing tax positions, and meeting filing obligations accurately and on time.",
+          "Whether supporting routine compliance or complex tax planning, we deliver practical, compliant, and commercially sound solutions."
+        ],
+        "keyFeatures": [
+          { "title": "Tax Planning", "description": "Strategic planning to optimize tax outcomes while ensuring compliance." },
+          { "title": "Zakat Advisory", "description": "Accurate Zakat calculations and regulatory compliance support." },
+          { "title": "VAT Advisory", "description": "Registration, planning, filing, and compliance assistance." },
+          { "title": "International Tax", "description": "Advisory support for cross-border operations and transactions." }
+        ],
+        "processSteps": [
+          { "title": "Tax Position Assessment", "description": "We review your current tax and zakat position to identify risks, gaps, and optimization opportunities." },
+          { "title": "Strategy Development", "description": "Our team designs customized tax strategies aligned with business objectives and regulatory requirements." },
+          { "title": "Implementation & Ongoing Support", "description": "We support execution and provide continuous advisory to ensure sustained compliance and efficiency." }
+        ]
+      },
+      "compliance-risk-advisory": {
+        "title": "Compliance & Risk Advisory",
+        "shortDescription": "Risk management and compliance solutions designed to protect organizations from regulatory exposure.",
+        "fullDescription": [
+          "Our compliance and risk advisory services support organizations in identifying, managing, and mitigating financial, operational, and regulatory risks. We help businesses establish strong governance frameworks and maintain compliance in a complex regulatory environment.",
+          "From compliance reviews to internal control assessments, our approach strengthens resilience while improving operational effectiveness."
+        ],
+        "keyFeatures": [
+          { "title": "Risk Identification", "description": "Assessment of financial, operational, and compliance risks." },
+          { "title": "Regulatory Compliance", "description": "Alignment with applicable laws and industry standards." },
+          { "title": "Internal Controls", "description": "Design and enhancement of effective control frameworks." },
+          { "title": "Ongoing Monitoring", "description": "Continuous compliance oversight and reporting." }
+        ],
+        "processSteps": [
+          { "title": "Risk & Compliance Assessment", "description": "We evaluate existing frameworks to identify gaps and exposure areas." },
+          { "title": "Framework Development", "description": "Customized risk and compliance structures aligned with your business model." },
+          { "title": "Implementation & Monitoring", "description": "Support execution and provide continuous monitoring to maintain compliance." }
+        ]
+      },
+      "corporate-advisory": {
+        "title": "Corporate Advisory & Strategy",
+        "shortDescription": "Strategic advisory support for mergers, acquisitions, and organizational transformation.",
+        "fullDescription": [
+          "Our corporate advisory services support organizations through complex strategic decisions, transactions, and transformation initiatives. We provide structured guidance across mergers, acquisitions, restructuring, and strategic planning.",
+          "With deep experience in corporate finance and strategy, we help clients evaluate opportunities, manage risks, and execute initiatives with confidence."
+        ],
+        "keyFeatures": [
+          { "title": "M&A Advisory", "description": "End-to-end support for mergers, acquisitions, and divestitures." },
+          { "title": "Strategic Planning", "description": "Development of growth and transformation strategies." },
+          { "title": "Due Diligence", "description": "Financial and operational due diligence services." },
+          { "title": "Transaction Support", "description": "Execution support across the transaction lifecycle." }
+        ],
+        "processSteps": [
+          { "title": "Strategic Evaluation", "description": "Assessment of objectives, opportunities, and transaction readiness." },
+          { "title": "Transaction Planning", "description": "Structuring and planning aligned with strategic and financial goals." },
+          { "title": "Execution & Integration", "description": "Support through execution and post-transaction integration." }
+        ]
+      },
+      "business-valuation": {
+        "title": "Business Valuation & Advisory",
+        "shortDescription": "Independent valuation services supporting transactions, reporting, and strategic decisions.",
+        "fullDescription": [
+          "Our business valuation services provide accurate, defensible valuations for businesses, assets, and securities. We support transactions, financial reporting, tax planning, and strategic decision-making through robust valuation methodologies.",
+          "Our valuation professionals combine technical expertise with market insight to deliver reliable analyses that stand up to regulatory and stakeholder scrutiny."
+        ],
+        "keyFeatures": [
+          { "title": "Business Valuation", "description": "Valuation of businesses, assets, and securities." },
+          { "title": "Transaction Support", "description": "Valuations for mergers, acquisitions, and disposals." },
+          { "title": "Financial Reporting", "description": "Fair value measurements and reporting support." },
+          { "title": "Strategic Advisory", "description": "Valuation-driven insights for informed decisions." }
+        ],
+        "processSteps": [
+          { "title": "Valuation Scoping", "description": "Understanding purpose, scope, and regulatory requirements." },
+          { "title": "Analysis & Methodology", "description": "Application of appropriate valuation techniques and assumptions." },
+          { "title": "Reporting & Advisory", "description": "Delivery of detailed valuation reports with clear insights and guidance." }
+        ]
+      }
+    }
+  },
+  "whyChoose": {
+    "title": "Why Choose Lumen",
+    "subtitle": "Confidence, credibility, and financial excellence in every engagement.",
+    "imageAlt": "Professional business meeting",
+    "reasons": [
+      {
+        "title": "Licensed in Saudi Arabia",
+        "description": "Fully licensed and regulated, operating under the highest compliance standards."
+      },
+      {
+        "title": "Experienced Professionals",
+        "description": "Specialized team with decades of combined expertise in financial advisory services."
+      },
+      {
+        "title": "Client-Centric Approach",
+        "description": "Customized solutions designed to align precisely with your business objectives."
+      },
+      {
+        "title": "Precision & Compliance",
+        "description": "Detail-oriented execution ensuring regulatory accuracy and compliance excellence."
+      }
+    ]
+  },
+  "values": {
+    "label": "Our Values",
+    "title": "What Drives",
+    "titleAccent": "Us",
+    "subtitle": "Our core values guide everything we do, shaping our approach to client service and business excellence.",
+    "items": [
+      {
+        "title": "Integrity",
+        "description": "We uphold the highest ethical standards in all our engagements, ensuring transparency and trust in every interaction."
+      },
+      {
+        "title": "Excellence",
+        "description": "We strive for perfection in every detail, delivering quality work that exceeds expectations and drives results."
+      },
+      {
+        "title": "Innovation",
+        "description": "We leverage cutting-edge technology and methodologies to provide efficient, forward-thinking solutions."
+      },
+      {
+        "title": "Partnership",
+        "description": "We build lasting relationships with our clients, working as an extension of their team to achieve shared goals."
+      }
+    ]
+  },
+  "process": {
+    "label": "Our Process",
+    "title": "Experience Our Impact Through",
+    "titleAccent": "Them",
+    "subtitle": "We are a dedicated team of experienced auditors and financial professionals committed to building lasting relationships with our clients. From startups to unique needs.",
+    "steps": [
+      {
+        "title": "Understanding Requirements",
+        "description": "We begin with a comprehensive consultation to gain a clear understanding of your business operations, challenges, and strategic objectives. This stage allows us to identify priorities, risks, and expectations."
+      },
+      {
+        "title": "Strategy Development",
+        "description": "Based on our assessment, we develop a tailored strategy aligned with your business goals, regulatory obligations, and operational requirements."
+      },
+      {
+        "title": "Execution",
+        "description": "Our team executes the agreed plan using proven methodologies, industry best practices, and advanced tools, ensuring accuracy, consistency, and timely delivery."
+      },
+      {
+        "title": "Review & Support",
+        "description": "We present clear outcomes and insights, followed by continuous advisory support to enable informed decision-making and sustained business improvement."
+      }
+    ]
+  },
+  "stats": {
+    "label": "Our Impact",
+    "title": "Numbers That",
+    "titleAccent": "Speak",
+    "subtitle": "Our track record demonstrates our commitment to excellence and client success.",
+    "items": [
+      { "number": "500+", "label": "Happy Clients", "description": "Trusted by businesses across Saudi Arabia" },
+      { "number": "15+", "label": "Years Experience", "description": "Combined expertise in financial services" },
+      { "number": "98%", "label": "Client Satisfaction", "description": "Consistently high satisfaction ratings" },
+      { "number": "100%", "label": "Compliance Rate", "description": "Perfect regulatory compliance record" }
+    ]
+  },
+  "insights": {
+    "title": "Explore Our",
+    "titleAccent": "Insights",
+    "subtitle": "Discover valuable insights, updates, and expert advice to navigate challenges and drive business success forward.",
+    "viewAll": "View All"
+  },
+  "blogs": {
+    "label": "BLOGS",
+    "title": "Explore Our",
+    "titleAccent": "Insights",
+    "subtitle": "Discover valuable insights, updates, and expert advice to navigate challenges and drive business success forward.",
+    "backToBlogs": "Back to Blogs",
+    "needGuidance": "Need Expert Financial Guidance?",
+    "ctaDescription": "Let's discuss how Lumen can help your business thrive.",
+    "contactUs": "Contact Us",
+    "relatedTitle": "You may also like:",
+    "noRelated": "No related articles found at the moment.",
+    "cmsContentNote": "Blog content is currently available in the source language from our CMS."
+  },
+  "faq": {
+    "title": "Frequently Asked",
+    "titleAccent": "Questions",
+    "subtitle": "Find answers to common questions about our services, processes, and how we can help your business thrive.",
+    "footerPrefix": "If you can't find your answer, please",
+    "contactUs": "Contact Us",
+    "items": [
+      {
+        "question": "How do I get started with your team?",
+        "answer": "Getting started with Lumen is straightforward. Simply reach out through our contact form or call us directly. We'll schedule an initial consultation to understand your business needs, discuss your goals, and outline how our services can support your financial objectives. Our team will guide you through the onboarding process and ensure a smooth transition."
+      },
+      {
+        "question": "How can your firm help with tax planning and compliance?",
+        "answer": "Our tax advisory team provides comprehensive tax planning and compliance services tailored to Saudi regulations. We help optimize your tax position through strategic planning, ensure full compliance with Zakat and tax obligations, prepare and file required returns, and provide ongoing advisory to minimize tax liabilities while maintaining regulatory compliance."
+      },
+      {
+        "question": "How do you ensure accuracy in accounting?",
+        "answer": "Accuracy is fundamental to our services. We employ rigorous quality control processes, utilize advanced accounting software and technology, conduct regular internal reviews, and maintain a team of certified professionals with extensive experience. Our systematic approach includes multiple checkpoints and verification processes to ensure every financial record is precise and reliable."
+      },
+      {
+        "question": "How often should audits be conducted?",
+        "answer": "The frequency of audits depends on your business requirements and regulatory obligations. For most companies, annual audits are standard. However, some businesses may require quarterly or semi-annual audits. We work with you to determine the optimal audit schedule based on your industry, size, compliance requirements, and strategic needs."
+      },
+      {
+        "question": "What is your approach to client confidentiality?",
+        "answer": "Client confidentiality is paramount at Lumen. We adhere to strict professional standards and legal requirements for data protection. All client information is handled with the utmost discretion, secured through advanced encryption and access controls, and shared only with authorized team members on a need-to-know basis. We maintain comprehensive confidentiality agreements and regularly review our security protocols to protect your sensitive financial data."
+      }
+    ]
+  },
+  "contact": {
+    "heroLabel": "Contact Us",
+    "heroTitle": "Start Your Financial",
+    "heroAccent": "Transformation Today",
+    "heroSubtitle": "Reach out to discover personalized solutions tailored to your unique vision.",
+    "label": "Get In Touch",
+    "title": "Ready to Transform Your Financial Strategy?",
+    "subtitle": "Reach out to discuss how Lumen can support your business growth.",
+    "infoTitle": "Contact Information",
+    "location": "Location",
+    "phone": "Phone",
+    "email": "Email",
+    "businessHours": "Business Hours",
+    "hoursWeekdays": "Saturday - Thursday: 9:00 AM - 6:00 PM",
+    "hoursFriday": "Friday: Closed",
+    "address": "Burj Alsafeer\n5th floor, 505\n3057/Falasteen street\nAsh Sharafiyah Dist\nJeddah, KSA\n23218",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formCompany": "Company",
+    "formMessage": "Message",
+    "placeholderName": "Your name",
+    "placeholderEmail": "your.email@company.com",
+    "placeholderCompany": "Your company name",
+    "placeholderMessage": "Tell us about your needs",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "toastSuccessTitle": "Message Sent!",
+    "toastSuccessDescription": "Thank you for reaching out. We'll get back to you shortly.",
+    "toastErrorTitle": "Failed to send message",
+    "toastErrorDescription": "Something went wrong. Please try again later.",
+    "toastConfigErrorTitle": "Configuration Error",
+    "toastConfigErrorDescription": "EmailJS environment variables are missing. Please check your configuration."
+  },
+  "footer": {
+    "tagline": "Illuminating financial clarity & strategic growth for businesses in Saudi Arabia.",
+    "company": "Company",
+    "services": "Services",
+    "connect": "Connect",
+    "copyright": "© {year} Lumen Audit & Advisory. All rights reserved."
+  },
+  "clients": {
+    "clientAlt": "Client {number}"
+  }
+}

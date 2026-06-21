@@ -1,3 +1,7 @@
+import createNextIntlPlugin from "next-intl/plugin"
+
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts")
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -5,14 +9,13 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    // Allow Sanity CDN images
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
   },
 }
 
-export default nextConfig
+export default withNextIntl(nextConfig)

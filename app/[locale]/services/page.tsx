@@ -1,11 +1,12 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import { useTranslations } from "next-intl"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import Link from "next/link"
-import Image from "next/image"
-import { allServices } from "@/lib/services-data"
-import { useEffect, useState } from "react"
+import { Link } from "@/i18n/navigation"
+import { useLocalizedServices } from "@/hooks/use-localized-services"
 
 function getIconComponent(iconName: string) {
   const iconProps = {
@@ -50,9 +51,13 @@ function getIconComponent(iconName: string) {
 }
 
 export default function ServicesPage() {
-  const [activeService, setActiveService] = useState<string>(allServices[0].slug)
+  const allServices = useLocalizedServices()
+  const t = useTranslations("services")
+  const [activeService, setActiveService] = useState<string>(allServices[0]?.slug ?? "")
 
   useEffect(() => {
+    if (!allServices.length) return
+
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -70% 0px",
@@ -61,50 +66,35 @@ export default function ServicesPage() {
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveService(entry.target.id)
-        }
+        if (entry.isIntersecting) setActiveService(entry.target.id)
       })
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
 
-    // Observe all service sections
     allServices.forEach((service) => {
       const element = document.getElementById(service.slug)
-      if (element) {
-        observer.observe(element)
-      }
+      if (element) observer.observe(element)
     })
 
     return () => {
       allServices.forEach((service) => {
         const element = document.getElementById(service.slug)
-        if (element) {
-          observer.unobserve(element)
-        }
+        if (element) observer.unobserve(element)
       })
     }
-  }, [])
+  }, [allServices])
 
   return (
     <main className="min-h-screen bg-transparent">
       <Navbar />
 
-      {/* Header/Banner Section */}
-      
-
-      {/* All Services Content */}
       <section className="relative py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-
-          {/* Main Content with Sidebar */}
           <div className="grid md:grid-cols-4 gap-8">
-            {/* Left Column - Sidebar (Sticky) */}
             <div className="md:col-span-1">
               <div className="sticky top-24">
                 <div className="bg-primary-sidebar rounded-xl p-6 shadow-xl">
-                  {/* Service List */}
                   <div className="space-y-2 mb-6">
                     {allServices.map((s) => (
                       <a
@@ -129,37 +119,25 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  {/* Contact Us Button */}
                   <Link
                     href="/contact"
                     className="block w-full py-3 px-6 rounded-lg font-semibold text-white text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl bg-cta-gradient hover:bg-cta-gradient-hover"
                   >
-                    Contact Us
+                    {t("contactUs")}
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - All Services Details */}
             <div className="md:col-span-3 space-y-24">
               {allServices.map((service, serviceIndex) => (
                 <div key={service.id} id={service.slug} className="scroll-mt-24">
-                  {/* Service Title */}
-                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                    {service.title}
-                  </h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">{service.title}</h2>
 
-                  {/* Service Image */}
                   <div className="relative w-full h-[400px] mb-8 rounded-2xl overflow-hidden shadow-xl">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                    />
+                    <Image src={service.image} alt={service.title} fill className="object-cover" />
                   </div>
 
-                  {/* Description Paragraphs */}
                   <div className="prose prose-lg max-w-none mb-12">
                     {service.fullDescription.map((paragraph, index) => (
                       <p key={index} className="text-foreground/80 leading-relaxed mb-4">
@@ -168,48 +146,36 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  {/* Key Features Section */}
                   <div className="mb-12">
-                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">
-                      Key Features
-                    </h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">{t("keyFeatures")}</h3>
                     <div className="grid md:grid-cols-2 gap-6">
                       {service.keyFeatures.map((feature, index) => (
                         <div
                           key={index}
                           className="flex gap-4 p-6 bg-white rounded-xl border-2 border-primary/10 hover:border-accent/40 hover:shadow-lg transition-all duration-300"
                         >
-                          {/* Icon */}
                           <div className="flex-shrink-0 w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent">
                             {getIconComponent(feature.icon)}
                           </div>
-                          {/* Content */}
                           <div className="flex-1">
                             <h4 className="font-bold text-primary mb-2 text-lg">{feature.title}</h4>
-                            <p className="text-foreground/70 text-sm leading-relaxed">
-                              {feature.description}
-                            </p>
+                            <p className="text-foreground/70 text-sm leading-relaxed">{feature.description}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Our Process Section */}
                   <div className="mb-12">
-                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">
-                      Our Process
-                    </h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">{t("ourProcess")}</h3>
                     <div className="space-y-10">
                       {service.processSteps.map((step, index) => (
                         <div key={index} className="flex gap-6">
-                          {/* Step Number */}
                           <div className="flex-shrink-0">
                             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
                               <span className="text-3xl font-bold text-gray-400">{step.number}</span>
                             </div>
                           </div>
-                          {/* Step Content */}
                           <div className="flex-1 pt-2">
                             <h4 className="text-xl font-bold text-primary mb-3">{step.title}</h4>
                             <p className="text-foreground/70 leading-relaxed">{step.description}</p>
@@ -219,7 +185,6 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* Divider between services (except last one) */}
                   {serviceIndex < allServices.length - 1 && (
                     <div className="border-t-2 border-primary/10 pt-12"></div>
                   )}
@@ -228,19 +193,14 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* Final CTA Section */}
           <div className="mt-24 bg-primary-gradient rounded-xl p-8 md:p-12 text-center shadow-xl">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Discuss Your Needs?
-            </h3>
-            <p className="text-white/90 mb-8 text-base md:text-lg max-w-2xl mx-auto">
-              Contact us today for a free consultation and discover how our services can benefit your business.
-            </p>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{t("ctaTitle")}</h3>
+            <p className="text-white/90 mb-8 text-base md:text-lg max-w-2xl mx-auto">{t("ctaDescription")}</p>
             <Link
               href="/contact"
               className="inline-block px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl bg-cta-gradient hover:bg-cta-gradient-hover"
             >
-              Get a Free Consultation
+              {t("ctaButton")}
             </Link>
           </div>
         </div>

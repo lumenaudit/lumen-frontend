@@ -1,31 +1,50 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { allServices, getServiceBySlug, getAllServiceSlugs, type Service } from "@/lib/services-data"
+import { getTranslations, setRequestLocale } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
+import { SERVICE_IDS } from "@/lib/service-images"
+import {
+  getLocalizedServiceBySlug,
+  getLocalizedServices,
+} from "@/lib/get-localized-services"
+import { routing } from "@/i18n/routing"
+import type { Metadata } from "next"
 
-// Generate static params for all services
 export async function generateStaticParams() {
-  const slugs = getAllServiceSlugs()
-  return slugs.map((slug) => ({
-    slug: slug,
-  }))
+  return routing.locales.flatMap((locale) =>
+    SERVICE_IDS.map((slug) => ({ locale, slug }))
+  )
 }
 
-// Generate metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = getServiceBySlug(params.slug)
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}): Promise<Metadata> {
+  const { locale, slug } = await params
+  const service = await getLocalizedServiceBySlug(slug)
+  const t = await getTranslations({ locale, namespace: "metadata" })
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lumenaudit.com"
+
   if (!service) {
-    return {
-      title: "Service Not Found",
-    }
+    return { title: t("serviceNotFound") }
   }
 
+  const path = `/services/${slug}`
+
   return {
-    title: `${service.title} | Lumen Audit & Advisory`,
+    title: `${service.title} | ${t("title")}`,
     description: service.shortDescription,
+    alternates: {
+      canonical: `${baseUrl}/${locale}${path}`,
+      languages: {
+        en: `${baseUrl}/en${path}`,
+        ar: `${baseUrl}/ar${path}`,
+        "x-default": `${baseUrl}/en${path}`,
+      },
+    },
   }
 }
 
@@ -71,8 +90,17 @@ function getIconComponent(iconName: string) {
   }
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = getServiceBySlug(params.slug)
+export default async function ServiceDetailPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+
+  const service = await getLocalizedServiceBySlug(slug)
+  const allServices = await getLocalizedServices()
+  const t = await getTranslations("services")
 
   if (!service) {
     notFound()
@@ -82,21 +110,17 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
     <main className="min-h-screen bg-transparent">
       <Navbar />
 
-      {/* Header/Banner Section */}
       <section className="relative w-full bg-primary-gradient py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {service.title}
-            </h1>
-            {/* Breadcrumbs */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">{service.title}</h1>
             <nav className="flex items-center justify-center gap-2 text-white/90 text-sm md:text-base">
               <Link href="/" className="hover:text-white transition-colors">
-                Home
+                {t("breadcrumbHome")}
               </Link>
               <span className="text-white/60">/</span>
               <Link href="/services" className="hover:text-white transition-colors">
-                Services
+                {t("breadcrumbServices")}
               </Link>
               <span className="text-white/60">/</span>
               <span className="text-white">{service.title}</span>
@@ -105,15 +129,12 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         </div>
       </section>
 
-      {/* Main Content Area */}
       <section className="relative py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
-            {/* Left Column - Sidebar */}
             <div className="md:col-span-1">
               <div className="sticky top-24">
                 <div className="bg-primary-sidebar rounded-xl p-6 shadow-xl">
-                  {/* Service List */}
                   <div className="space-y-2 mb-6">
                     {allServices.map((s) => (
                       <Link
@@ -129,36 +150,23 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                       </Link>
                     ))}
                   </div>
-
-                  {/* Contact Us Button */}
                   <Link
                     href="/contact"
                     className="block w-full py-3 px-6 rounded-lg font-semibold text-white text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl bg-primary-button-gradient"
                   >
-                    Contact Us
+                    {t("contactUs")}
                   </Link>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Service Details */}
             <div className="md:col-span-3">
-              {/* Service Title */}
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                {service.title}
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">{service.title}</h2>
 
-              {/* Service Image */}
               <div className="relative w-full h-[400px] mb-8 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={service.image} alt={service.title} fill className="object-cover" />
               </div>
 
-              {/* Description Paragraphs */}
               <div className="prose prose-lg max-w-none mb-12">
                 {service.fullDescription.map((paragraph, index) => (
                   <p key={index} className="text-foreground/80 leading-relaxed mb-4">
@@ -167,48 +175,36 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 ))}
               </div>
 
-              {/* Key Features Section */}
               <div className="mb-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">
-                  Key Features
-                </h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">{t("keyFeatures")}</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   {service.keyFeatures.map((feature, index) => (
                     <div
                       key={index}
                       className="flex gap-4 p-6 bg-white rounded-xl border-2 border-primary/10 hover:border-accent/40 hover:shadow-lg transition-all duration-300"
                     >
-                      {/* Icon */}
                       <div className="flex-shrink-0 w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center text-accent">
                         {getIconComponent(feature.icon)}
                       </div>
-                      {/* Content */}
                       <div className="flex-1">
                         <h4 className="font-bold text-primary mb-2 text-lg">{feature.title}</h4>
-                        <p className="text-foreground/70 text-sm leading-relaxed">
-                          {feature.description}
-                        </p>
+                        <p className="text-foreground/70 text-sm leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Our Process Section */}
               <div className="mb-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">
-                  Our Process
-                </h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-8">{t("ourProcess")}</h3>
                 <div className="space-y-10">
                   {service.processSteps.map((step, index) => (
                     <div key={index} className="flex gap-6">
-                      {/* Step Number */}
                       <div className="flex-shrink-0">
                         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
                           <span className="text-3xl font-bold text-gray-400">{step.number}</span>
                         </div>
                       </div>
-                      {/* Step Content */}
                       <div className="flex-1 pt-2">
                         <h4 className="text-xl font-bold text-primary mb-3">{step.title}</h4>
                         <p className="text-foreground/70 leading-relaxed">{step.description}</p>
@@ -218,19 +214,16 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 </div>
               </div>
 
-              {/* CTA Section */}
               <div className="bg-primary-gradient rounded-xl p-8 md:p-12 text-center shadow-xl">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Ready to Discuss Your Needs?
-                </h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{t("ctaTitle")}</h3>
                 <p className="text-white/90 mb-8 text-base md:text-lg max-w-2xl mx-auto">
-                  Contact us today for a free consultation and discover how our {service.title.toLowerCase()} services can benefit your business.
+                  {t("ctaDescriptionWithService", { service: service.title })}
                 </p>
                 <Link
                   href="/contact"
                   className="inline-block px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl bg-cta-gradient hover:bg-cta-gradient-hover"
                 >
-                  Get a Free Consultation
+                  {t("ctaButton")}
                 </Link>
               </div>
             </div>
@@ -242,4 +235,3 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
     </main>
   )
 }
-
